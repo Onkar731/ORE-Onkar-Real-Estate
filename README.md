@@ -230,7 +230,7 @@ Ensure required database drivers are installed:
 
 Developed by: Onkar Shengule
 
-GitHub: https://github.com/your-username
+GitHub: https://github.com/Onkar731
 
 ---
 
