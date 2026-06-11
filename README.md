@@ -91,7 +91,7 @@ ORE/
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/ORE.git
+git clone https://github.com/Onkar731/ORE-Onkar-Real-Estate.git
 cd ORE
 ```
 
