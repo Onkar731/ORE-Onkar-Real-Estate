@@ -131,6 +131,10 @@ python manage.py runserver
 
 Create `.env` file:
 
+If Don't want to use this you can commit this part in your .env file. Django will fall back to default DB and generate random SECRET_KEY
+
+For email config its upto you to specify or not.
+
 ```env
 SECRET_KEY=your_secret_key
 
