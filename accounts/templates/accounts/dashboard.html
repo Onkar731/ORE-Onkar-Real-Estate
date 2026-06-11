@@ -1,0 +1,75 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+{{user.username|title}} | Dashboard
+{% endblock title %}
+
+{% block content %}
+  <section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">{{user.first_name}} {{user.last_name}}</h1>
+          <p class="lead">Manage your Real Estate account</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'pages:index' %}">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item active"> Dashboard</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+   <!--Alert-->
+    {% include "components/_message.html" %}
+  <section id="dashboard" class="py-4">
+    <div class="container">
+      <div class="row">
+        {% if inquired_listings %}
+            <div class="col-md-12">
+              <h2>Welcome, {{user.first_name}} {{user.last_name}}</h2>
+              <p>Here are the property listings that you have inquired about</p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Property</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for property in inquired_listings %}
+                      <tr>
+                        <td class="font-weight-bold">{{property.listing.address.building_name}}, {{property.listing.address.house_no}} {{property.listing.address.street}}</td>
+                        <td>
+                          <a class="btn btn-outline-success" href="{% url 'listings:listing' property.listing.id%}">View Listing</a>
+                        </td>
+                      </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        {% else %}
+            <div
+            class="d-flex justify-content-center align-items-center flex-column w-100 flex-grow-1 text-center"
+            style="min-height:198px"
+          >
+            <p class="fw-bold fs-4 text-primary">Property Inquiry Not Available</p>
+            <i class="fas fa-home fa-3x text-muted"></i>
+            <a href="{% url 'listings:listings' %}" class="btn btn-outline-success my-4">Browse Properties</a>
+
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock content %}
